@@ -24,7 +24,7 @@ export interface Company {
     bs: string;
 }
 
-export interface User {
+export interface UserCardProps {
     id: number;
     name: string;
     username: string;
@@ -35,10 +35,3 @@ export interface User {
     company: Company;
 }
 
-export interface UserCardProps {
-    user: User;
-}
-
-export interface UserPageProps {
-    users: User[];
-}

@@ -1,54 +1,47 @@
-// 
+import { UserCardProps } from "@/interfaces";
+import Header from "@/components/layout/Header";
+import UserCard from "@/components/common/UserCard";
 
+type Props = {
+  posts: UserCardProps[];
+}
 
-// pages/users/index.tsx
-import UserCard from '@/components/common/UserCard';
-import Header from '@/components/layout/Header';
-import { UserPageProps } from '@/interfaces';
-
-const UsersPage: React.FC<UserPageProps> = ({ users }) => {
+const Users: React.FC<Props> = ({ posts }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex flex-col h-screen gap-2">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        {/* Header Section */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800">User Details</h2>
-          <button className="text-white bg-blue-600 hover:bg-blue-700 rounded-full py-2 px-6 text-lg transition-colors duration-200">
-            Add User
-          </button>
+      <main className="mx-3">
+        <div className="flex justify-between p-2 my-1 ">
+          <h2 className="font-semibold text-3xl text-gray-800">Users Details</h2>
+          <button className="bg-blue-500 hover:bg-blue-400 rounded-full py-2 px-4 items-center text-white">Add User</button>
         </div>
-        
-        {/* Users Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {users.map((user) => (
-            <UserCard 
-              key={user.id} 
-              user={user} 
-              className="hover:shadow-lg transition-shadow duration-300"
-            />
+        <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {posts.map((user: UserCardProps) => (
+            <UserCard key={user.id} {...user} />
           ))}
         </div>
       </main>
-    </div>
-  );
-};
 
+    </div>
+  )
+}
 export async function getStaticProps() {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    const users = await response.json();
-    
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+    const posts = await response.json()
+
     return {
-      props: { users },
-      revalidate: 60, // Optional: ISR - revalidate every 60 seconds
-    };
+      props: { 
+        posts
+      }
+    }
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error('Trouble getting file', error)
     return {
-      props: { users: [] },
-    };
+      props: {
+        posts: []
+      }
+    }
   }
 }
-
-export default UsersPage;
+export default Users;
