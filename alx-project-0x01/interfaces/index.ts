@@ -24,7 +24,7 @@ export interface Company {
     bs: string;
 }
 
-export interface UserCardProps {
+export interface UserProps {
     id: number;
     name: string;
     username: string;

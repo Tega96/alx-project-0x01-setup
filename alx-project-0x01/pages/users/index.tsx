@@ -1,9 +1,9 @@
-import { UserCardProps } from "@/interfaces";
+import { UserProps } from "@/interfaces";
 import Header from "@/components/layout/Header";
 import UserCard from "@/components/common/UserCard";
 
 type Props = {
-  posts: UserCardProps[];
+  posts: UserProps[];
 }
 
 const Users: React.FC<Props> = ({ posts }) => {
@@ -16,7 +16,7 @@ const Users: React.FC<Props> = ({ posts }) => {
           <button className="bg-blue-500 hover:bg-blue-400 rounded-full py-2 px-4 items-center text-white">Add User</button>
         </div>
         <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {posts.map((user: UserCardProps) => (
+          {posts.map((user: UserProps) => (
             <UserCard key={user.id} {...user} />
           ))}
         </div>

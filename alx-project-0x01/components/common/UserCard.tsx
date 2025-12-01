@@ -1,8 +1,8 @@
 import React from 'react';
 import type { FC } from 'react';
-import { UserCardProps } from '@/interfaces';
+import { UserProps } from '@/interfaces';
 
-const UserCard: FC<UserCardProps> = ({
+const UserCard: FC<UserProps> = ({
   id,
   name,
   username,
