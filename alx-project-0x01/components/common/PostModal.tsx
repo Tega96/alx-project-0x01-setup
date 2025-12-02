@@ -17,7 +17,7 @@ const PostModal: React.FC<PostModalProps> = ({
         }
 
         const handleSubmit = (e: React.FormEvent) => {
-            e.preventDefault()
+            e.preventDefault();
             onSubmit(post);
             onClose();
         }

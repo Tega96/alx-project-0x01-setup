@@ -1,15 +1,14 @@
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
-import { PostData } from "@/interfaces";
+import { PostData, PostProps } from "@/interfaces";
 import {useState} from 'react'
-import { PostProps } from '@/interfaces';
 
 
 
 const Post: React.FC<PostProps[]> =({ posts }) => {
 
-    const [isModalOpen, setModalOpen] = useState(falsse);
+    const [isModalOpen, setModalOpen] = useState(false);
     const [post, setPost] = useState<PostData | null>(null);
 
     const handleAddPost = (newPost: PostData) => {
