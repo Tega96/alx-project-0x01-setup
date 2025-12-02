@@ -77,7 +77,6 @@ const PostModal: React.FC<PostModalProps> = ({
                             >
                                 Add Post
                             </button>
-
                         </div>
                     </form>
                 </div>
